@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Triángulo de asteriscos</title>
+    <style>
+        .mono {
+            font-family: monospace;
+            white-space: pre;
+        }
+    </style>
+  </head>
+  <body>
+    <script>
+      let numeroIntroducido = parseInt(
+        prompt(
+          `Introduzca el número de asteriscos que desea en la base del triángulo: `
+        )
+      );
+
+      while (isNaN(numeroIntroducido) || numeroIntroducido < 1) {
+        numeroIntroducido = parseInt(
+          prompt(
+            `El número que has introducido no es correcto. Introduzca un número de asteriscos mayor o igual a 1: `
+          )
+        );
+      }
+
+      for (let i = 1; i <= numeroIntroducido; i++) {
+        for (let j = 1; j <= i; j++) {
+          document.write(`*`);
+        }
+        document.write(`<br>`); // Salto de línea
+      }
+    </script>
+  </body>
+</html>

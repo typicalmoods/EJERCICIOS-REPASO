@@ -1,0 +1,26 @@
+**twoSum**
+
+¿Qué no está pidiendo el ejercicio?
+Dada una array de integers y un solo integer como objetivo, devuelve los índices de los dos números de la lista que sumados den como resultado el objetivo mencionado.
+
+INPUT: 
+números = [2, 7, 11, 15]
+objetivo = 9
+
+OUTPUT:
+[0, 1]
+
+ELEMENTOS CLAVE:
+-Lista de números para imprimir después el output
+-Número complementario = objetivo - numero [i]
+
+QUÉ HACER:
+-Hacer un bucle que recorra la lista buscando uno por uno los números que sumados entre sí den como resultado el objetivo esperado.
+-Si se cumple la condición del bucle crear el número complementario, que será el resultado de restar el target con el primer número de la lista.
+-Necesitamos comprobar si el número complementario ya existe en nuestra lista anteriormente creada. Si se encuentra la solución, deberemos devolver la lista de índices que dan como resultado el objetivo.
+-Si todo se cumple, guardaremos en la lista el número actual y su índice.
+-Si el bucle no se cumple, devolveremos una array vacía.
+-Haremos la comprobación de que nuestro programa funciona correctamente creando ejemplos.
+-Llamamos a la función creando una constante que dé nuestro resultado final del programa.
+-Mostramos el resultado en la consola.
+

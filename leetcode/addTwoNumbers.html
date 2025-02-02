@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Add Two Numbers</title>
+  </head>
+  <body>
+    <script>
+      //Ejercicio: te dan dos listas enlazadas no vacías que representan dos
+      //enteros no negativos. Los dígitos se almacenan en orden inverso y cada uno
+      //de sus nodos contiene un solo dígito. Suma los dos números y devuelve la
+      //suma como una lista enlazada.
+
+      // Definir la clase ListaNodos
+      class ListaNodos {
+        constructor(val = 0, next = null) {
+          this.val = val;
+          this.next = next;
+        }
+      }
+
+      function addTwoNumbers(lista1, lista2) {
+        //Creamos un nodo temporal para almacenar el resultado
+        let nodoTemporal = new ListaNodos(0);
+        let current = nodoTemporal;
+
+        //Acarreo --> si la suma de dos dígitimos es >= 10 el valor de la suma
+        //se divide en dos: un valor que se queda en el dígito actual y otro que
+        //se añade al siguiente dígito
+        let acarreo = 0;
+
+        //Creamos un bucle para sumar los números
+        while (lista1 || lista2 || acarreo) {
+          let suma = acarreo;
+          if (lista1) {
+            //.val se utiliza para obtener o establecer el valor
+            suma += lista1.val;
+            lista1 = lista1.next;
+          }
+          if (lista2) {
+            suma += lista2.val;
+            lista2 = lista2.next;
+          }
+
+          //Dividimos la suma(si suma es >=10) entre 10 para conseguir el valor
+          //del acarreo y redondeándolo a la baja
+          acarreo = Math.floor(suma / 10);
+
+          //Creamos el nuevo nodo con el dígito resultante
+          current.next = new ListaNodos(suma % 10);
+
+          //Nos movemos al siguiente nodo
+          current = current.next;
+        }
+
+        //El primer nodo es temporal, devolvemos el siguiente
+        return nodoTemporal.next;
+      }
+
+      // Crear las listas enlazadas de ejemplo
+      let l1 = new ListaNodos(2, new ListaNodos(4, new ListaNodos(3))); // Representa 342
+      let l2 = new ListaNodos(5, new ListaNodos(6, new ListaNodos(4))); // Representa 465
+
+      // Sumar las listas
+      let resultado = addTwoNumbers(l1, l2);
+
+      // Mostrar el resultado
+      let current = resultado;
+      while (current) {
+        // Mostrar los valores de la lista resultante
+        console.log(current.val); 
+        current = current.next;
+      }
+    </script>
+  </body>
+</html>

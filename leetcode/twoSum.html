@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Two Sum</title>
+  </head>
+  <body>
+    <script>
+      //Ejercicio: Dada una array de números enteros y un número entero como objetivo,
+      //devuelve índices de los dos números tales que se sumen al objetivo.
+      
+      //Creamos la función TwoSum
+      function twoSum(nums, objetivo) {
+        //Creamos un mapa para almacenar números e índices
+        const listaNumeros = new Map();
+
+        //Calculamos el complemento
+        for (let i = 0; i < nums.length; i++) {
+          const numeroComplementario = objetivo - nums[i];
+
+          //Verificar si el complemento ya está en el mapa
+          if (listaNumeros.has(numeroComplementario)) {
+            //Devolvemos los índices si se encuentra la solución
+            return [listaNumeros.get(numeroComplementario), i];
+          }
+
+          //Guardamos el número actual y su índice en el mapa
+          listaNumeros.set(nums[i], i);
+        }
+
+        return[];
+      }
+
+      //Ejemplo de uso
+      const nums = [2, 7, 11, 15];
+      const objetivo = 9;
+
+      //LLamamos a la función y almacenamos el resultado
+      const resultado = twoSum(nums, objetivo);
+
+      //Mostramos el resultado en la consola
+      console.log(`Los índices son: ${resultado}`);
+    </script>
+  </body>
+</html>

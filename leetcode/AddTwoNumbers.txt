@@ -1,0 +1,20 @@
+<<AddTwoNumbers>>
+
+-Tenemos que crear una clase llamada *ListaNodos* para poder crear más adelante un Map personalizado.
+-Creamos la función llamada *addTwoNumbers* con los parámetros *lista1* y *lista2*.
+-Dentro de la función creamos un nodo temporal para almacenar el resultado que contendrá como valor una lista llamada *listaNodos* que se inicializará en 0.
+-Creamos la variable current(será lo que apunte a cada nodo).
+-Creamos la variable *acarreo* para referirnos a la suma dedos dígitos que dé como resultado >= 10. Este valor se dividirá en dos: un valor que se queda en el dígito actual y otro que se añade al siguiente dígito.
+-Creamos un bucle para sumar los números comprobando que queda algo por sumar en lista1, lista2 y acarreo.
+-Creamos la variable *suma* inicializado con el valor de acarreo para tener en cuenta cualquier valor que pueda haberse transportado desde la iteración anterior.
+-A la variable *suma* le añadimos el valor lista1.
+-Pasamos a la lista2 haciendo un "list1 = list1.next".
+-Repetimos el mismo proceso que antes pero con list2.
+-Dividimos *suma* (si *suma* es >= 10) entre 10 para conseguir el valor del acarreo y redondeándolo a la baja.
+-Creamos el nuevo nodo con el dígito resultante usando la *ListaNodos* que creamos anteriormente en nuestra clase llamada *ListaNodos*.
+-Nos movemos al siguiente nodo usando "current = current.next;".
+-El primer nodo que creamos anteriormente era temporal, es por ello que devolveremos el siguiente nodo que SÍ será real con "return nodoTemporal.next;".
+-Ya fuera de nuestra función, crearemos listas enlazadas de ejemplo.
+-Sumaremos las listas declarando la variable *resultado* y asignándole el valor retornado por la función *addTwoNumbers* pasándole como argumentos l1 y l2 (las nuevas listas).
+-Mostramos el resultado por pantalla declarando de nuevo *current* para posicionarnos en *resultado*.
+-Creammos un bucle que muestre los valores de los nodos por pantalla y de nuevo pasamos al siguiente nodo para que siga mostrando los valores por pantalla.

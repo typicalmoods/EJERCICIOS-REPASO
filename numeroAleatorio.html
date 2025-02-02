@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Genera un número aleatorio</title>
+  </head>
+  <body>
+    <script>
+      let numeroAleatorio = Math.floor(Math.random() * 10) + 1;
+      let intentos = 3;
+
+      for (let i = 1; i <= intentos; i++) {
+        let adivinanza = parseInt(prompt(`Adivina el número: `));
+        if (adivinanza === numeroAleatorio) {
+          alert(`¡Correcto!`);
+          break;
+        } else {
+          alert(`Número incorrecto, pruebe de nuevo`);
+        }
+
+        if (i === intentos) {
+          alert(
+            `No te quedan intentos. El número aleatorio era ${numeroAleatorio}`
+          );
+        }
+      }
+    </script>
+  </body>
+</html>

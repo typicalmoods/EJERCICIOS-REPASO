@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Numeración del 1 al 7</title>
+  </head>
+  <body>
+    <script>
+      //Declaramos la variable
+      let numeroUsuario = parseInt(prompt(`Introduce un número del 1 al 7: `));
+
+      //Creamos una condición para verificar que el número introducido
+      //es correcto
+      while (numeroUsuario < 1 || numeroUsuario > 7) {
+        numeroUsuario = parseInt(
+          prompt(`Por favor, introduce un número válido: `)
+        );
+      }
+      //Creamos nuestra sentencia para imprimir los días
+      if (numeroUsuario == 1) {
+        alert(`Hoy es lunes`);
+      } else if (numeroUsuario == 2) {
+        alert(`Hoy es martes`);
+      } else if (numeroUsuario == 3) {
+        alert(`Hoy es miércoles`);
+      } else if (numeroUsuario == 4) {
+        alert(`Hoy es jueves`);
+      } else if (numeroUsuario == 5) {
+        alert(`Hoy es viernes`);
+      } else if (numeroUsuario == 6) {
+        alert(`Hoy es sábado`);
+      } else if (numeroUsuario == 7) {
+        alert(`Hoy es domingo`);
+      }
+    </script>
+  </body>
+</html>

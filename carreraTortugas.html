@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Carrera tortugas</title>
+  </head>
+  <body>
+    <script>
+      //Inicializamos la posición de cada tortuga
+      let tortuga1 = 0;
+      let tortuga2 = 0;
+      let tortuga3 = 0;
+
+      const metaFinal = 20;
+
+      const tortugaElegida = prompt(
+        `Elige tortuga1, tortuga2 o tortuga3 `
+      ).toLowerCase();
+
+      //Creamos la variable para almacenar el ganador
+      let ganador = null;
+
+      //Generamos un bucle para que las tortugas vayan avanzando
+
+      while (!ganador) {
+        //Generamos un número aleatorio del 1 al 5 para cada tortuga
+        const avanceTortuga1 = Math.floor(Math.random() * 5) + 1;
+        const avanceTortuga2 = Math.floor(Math.random() * 5) + 1;
+        const avanceTortuga3 = Math.floor(Math.random() * 5) + 1;
+
+        //Sumamos el avance de cada posición
+        tortuga1 += avanceTortuga1;
+        tortuga2 += avanceTortuga2;
+        tortuga3 += avanceTortuga3;
+        //Verificamos si alguna tortuga ha llegado a la meta
+        if (
+          tortuga1 >= metaFinal ||
+          tortuga2 >= metaFinal ||
+          tortuga3 >= metaFinal
+        ) {
+          if (tortuga1 >= metaFinal) {
+            ganador = `tortuga1`;
+          } else if (tortuga2 >= metaFinal) {
+            ganador = `tortuga2`;
+          } else {
+            ganador = `tortuga3`;
+          }
+        }
+      }
+      //Verificamos si el jugador ganó o perdió
+      if (ganador == tortugaElegida) {
+        alert(`Enhorabuena!`);
+      } else {
+        alert(`Has perdido! El ganador era ${ganador}`);
+      }
+    </script>
+  </body>
+</html>

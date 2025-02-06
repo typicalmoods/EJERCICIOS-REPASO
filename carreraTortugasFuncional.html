@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carrera de tortugas con funciones</title>
+</head>
+
+<body>
+    <script>
+        //Función para posicionar las tortugas
+        function inicializarTortugas() {
+            return { tortuga1: 0, tortuga2: 0, tortuga3: 0 };
+        }
+
+        //Función para avanzar una tortuga
+        function avanzarTortuga() {
+            return Math.floor(Math.random() * 5) + 1;
+        }
+
+        //Función para verificar si alguna tortuga ha llegado a la meta
+        function haLLegadoMeta(posicion, metaFinal) {
+            return posicion >= metaFinal;
+        }
+
+        //Función para determinar el ganador
+        function verificarGanador(tortugas, metaFinal) {
+            for (let tortuga in tortugas) {
+                if (haLLegadoMeta(tortugas[tortuga], metaFinal)) {
+                    return tortuga;
+                }
+            }
+            return null;
+        }
+
+        //Función principal para iniciar el juego
+        function iniciarJuego() {
+            //Inicializamos las tortugas
+            let tortugas = inicializarTortugas();
+            const metaFinal = 20;
+
+            //Pedimos al jugador que eliga una tortuga
+            const tortugaElegida = prompt(`Elige entre tortuga1, tortuga2 o tortuga3`).toLowerCase();
+
+            //Creamos la variable para almacenar el ganador
+            let ganador = null;
+
+            //Generamos un bucle para que las tortugas avancen
+            while (!ganador) {
+                //Cada tortuga irá avanzando
+                tortugas.tortuga1 += avanzarTortuga();
+                tortugas.tortuga2 += avanzarTortuga();
+                tortugas.tortuga3 += avanzarTortuga();
+
+                //Imprimimos la posición de cada tortuga
+                console.log(`tortuga1 avanzó a posición ${tortugas.tortuga1}`);
+                console.log(`tortuga2 avanzó a posición ${tortugas.tortuga2}`);
+                console.log(`tortuga3 avanzó a posición ${tortugas.tortuga3}`);
+
+                //Verificamos si alguna tortuga ha llegado a la meta
+                ganador = verificarGanador(tortugas, metaFinal);
+
+                //Verificamos si el jugador ganó o perdió
+                if (ganador === tortugaElegida) {
+                    aler(`Enhorabuena!`);
+                } else {
+                    alert(`Has perdido!`);
+                }
+            }
+        }
+
+        iniciarJuego();
+    </script>
+</body>
+
+</html>

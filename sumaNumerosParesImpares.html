@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        let numeroInicio = parseInt(prompt("Ingrese un número de inicio: "));
+        let numeroFinal = parseInt(prompt("Ingrese un número final: "));
+
+        if (!isNaN(numeroFinal) && !isNaN(numeroInicio)) {
+            let sumaPares = 0;
+            let sumaImpares = 0;
+            let numeroActual = numeroInicio;
+
+            while (numeroActual <= numeroFinal) {
+                if (numeroActual % 2 === 0) {
+                    sumaPares += numeroActual;
+                } else {
+                    sumaImpares += numeroActual;
+                }
+                numeroActual++;
+            }
+
+            alert(`La suma de los números pares es: ${sumaPares}`);
+            alert(`La suma de los números impares es: ${sumaImpares}`);
+        } else {
+            alert("Introduzca un números válidos")
+        }
+    </script>
+</body>
+
+</html>

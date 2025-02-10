@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        let listaAnimales = new Map();
+
+        for (let i = 1; i <= 6; i++) {
+            let animal = prompt(`Introduce el animal ${i}`).trim();
+            if (typeof animal === "string" && animal !== "") {
+                listaAnimales.set(i, animal);
+            }
+        }
+
+        //Construimos el mensaje con forEach()
+        let mensaje = "Lista de animales:\n";
+        listaAnimales.forEach((valor, clave) => {
+            mensaje += `Animal ${clave} : ${valor}\n`;
+        });
+
+        alert(mensaje);
+    </script>
+</body>
+
+</html>

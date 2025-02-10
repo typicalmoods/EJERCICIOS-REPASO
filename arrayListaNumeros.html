@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de números</title>
+</head>
+
+<body>
+    <script>
+        const listaNumeros = [];
+        let suma = 0;
+
+        function agregarNumero() {
+            let entrada = prompt("Agrega un número o escribe 'salir' para terminar:");
+
+            // Verificar si el usuario presionó 'Cancelar' o escribió 'salir'
+            if (entrada === null || entrada.toLowerCase() === "salir") {
+                return false;
+            }
+
+            let numeroAgregado = parseFloat(entrada); // Usamos parseFloat para permitir decimales
+            if (!isNaN(numeroAgregado)) {
+                listaNumeros.push(numeroAgregado);
+                suma += numeroAgregado;
+            } else {
+                alert("Entrada no válida, intenta de nuevo.");
+            }
+            return true;
+        }
+
+        function calcularPromedio() {
+            return listaNumeros.length > 0 ? suma / listaNumeros.length : 0;
+        }
+
+        function encontrarNumeroMayor() {
+            return Math.max(...listaNumeros);
+        }
+
+        function encontrarNumeroMenor() {
+            return Math.min(...listaNumeros);
+        }
+
+        function obtenerOrdenInverso() {
+            return [...listaNumeros].reverse();
+        }
+
+        // Agregar números hasta que el usuario decida salir
+        while (agregarNumero());
+
+        // Verificar si se ingresaron números
+        if (listaNumeros.length > 0) {
+            console.log(`Números ingresados: ${listaNumeros}`);
+            console.log(`Promedio: ${calcularPromedio()}`);
+            console.log(`Número mayor: ${encontrarNumeroMayor()}`);
+            console.log(`Número menor: ${encontrarNumeroMenor()}`);
+            console.log(`Números en orden inverso: ${obtenerOrdenInverso()}`);
+        } else {
+            alert("No ingresaste ningún número.");
+        }
+
+    </script>
+</body>
+
+</html>

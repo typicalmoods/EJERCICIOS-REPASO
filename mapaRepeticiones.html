@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Contador de Palabras</title>
+  </head>
+  <body>
+    <h1>Contador de Repeticiones de Palabras</h1>
+    <div>
+      <label for="palabraUsuario">Ingrese una palabra: </label>
+      <input type="text" id="palabraUsuario" />
+      <button onclick="agregarPalabras()">Agregar palabra</button>
+    </div>
+    <div id="recuentoPalabras">
+      <h2>Repeticiones:</h2>
+      <pre id="resultadoRecuento"></pre>
+    </div>
+
+    <script>
+      //Mapa para contar las repeticiones de las palabras
+      let listaPalabras = new Map();
+
+      //Creamos la función para agregar las palabras al mapa
+      function agregarPalabras() {
+        const palabraUsuario = document
+          .getElementById("palabraUsuario")
+          .value.trim();
+
+        //Creamos una condición por si el input está vacío
+        if (!palabraUsuario) {
+          return;
+        }
+
+        //Actualizamos el mapa con la palabra y su contador
+        if (listaPalabras.has(palabraUsuario)) {
+          listaPalabras.set(
+            palabraUsuario,
+            listaPalabras.get(palabraUsuario) + 1
+          );
+        } else {
+          listaPalabras.set(palabraUsuario, 1);
+        }
+
+        //Limpiamos el input, donde el usuario está introduciendo las palabras
+        document.getElementById("palabraUsuario").value = "";
+
+        //Mostramos el mapa actualizado en la página
+        resultadoMapa();
+      }
+
+      //Creamos la función para mostrar los resultado en nuestra página web
+      function resultadoMapa() {
+        const resultado = document.getElementById("resultadoRecuento");
+        let resultadoTexto = "";
+
+        //Iteramos por el mapa y agregamos los resultados
+        listaPalabras.forEach((cuenta, palabra) => {
+          resultadoTexto += `${palabra} : ${cuenta}\n`;
+        });
+
+        resultado.textContent = resultadoTexto;
+      }
+    </script>
+  </body>
+</html>

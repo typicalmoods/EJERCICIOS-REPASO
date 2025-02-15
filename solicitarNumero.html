@@ -1,36 +1,45 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-</head>
+  </head>
 
-<body>
+  <body>
     <script>
-        let numeroSolicitado = parseInt(prompt("Introduce un número:"));
+      let numeroSolicitado = parseInt(prompt("Introduce un número:"));
 
-        if (!isNaN(numeroSolicitado) && numeroSolicitado > 0) {
-            let cantidadPrimos = 0;
-            let listaPrimos = [];
+      if (!isNaN(numeroSolicitado) && numeroSolicitado > 0) {
+        let cantidadPrimos = 0;
+        let listaPrimos = [];
 
-            for (let i = 2; i <= numeroSolicitado; i++) {
-                //Inicializamos la variable de primo en true
-                let esPrimo = true;
+        for (let i = 2; i <= numeroSolicitado; i++) {
+          //Inicializamos la variable de primo en true
+          let esPrimo = true;
 
-                //Inicializamos en 2 porque todos los números son divisibles por 1
-                for (let j = 2; j <= Math.sqrt(i); j++) {
-                    if (i % j === 0) {
-                        esPrimo = false;
-                        break;
-                    }
-                }
+          //Inicializamos en 2 porque todos los números son divisibles por 1
+          //La raíz cuadrada de i nunca será i, excepto 1, pero empezamos a comprobar a partir de 2
+          for (let j = 2; j <= Math.sqrt(i); j++) {
+            if (i % j === 0) {
+              esPrimo = false;
+              break;
             }
-        } else {
-            alert("Por favor, introduce un número válido");
+          }
+          if (esPrimo) {
+            console.log(`${i} es primo`);
+            listaPrimos.push(i);
+            cantidadPrimos++;
+          }
         }
+        console.log(
+          `Se encontraron ${cantidadPrimos} números primos: ${listaPrimos.join(
+            ", "
+          )}`
+        );
+      } else {
+        alert("Por favor, introduce un número válido");
+      }
     </script>
-</body>
-
+  </body>
 </html>

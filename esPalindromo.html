@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Es palíndromo</title>
+    <script>
+      // Creamos la función para comprobar si es palíndromo o no
+      function esPalindromo(texto) {
+        // Convertimos el texto introducido por el usuario a minúsculas
+        let textoLimpio = texto.toLowerCase();
+        // Comprobamos si textoLimpio es igual al resultado de convertir en array,
+        // le damos la vuelta y volvemos a unir en una cadena
+        return textoLimpio === textoLimpio.split("").reverse().join("");
+      }
+    </script>
+  </head>
+  <body>
+    <script>
+      // Pedimos al usuario que introduzca un texto
+      let textoUsuario = prompt("Introduzca un texto: ");
+      //Comprobamos que el usuario ha introducido bien la palabra
+      // o si ha dejado el recuadro sin rellenar
+      if (textoUsuario.trim() == "") {
+        let textoUsuario = prompt("Por favor, introduzca un texto válido");
+      } else {
+        // Creamos una variable que será el resultado de usar el método esPalindromo
+        // en el texto que introdujo el usuario
+        let esPalin = esPalindromo(textoUsuario);
+
+        let mensaje = esPalin ? "Es palíndromo" : "No es palíndromo";
+        alert(`${mensaje}`);
+      }
+    </script>
+  </body>
+</html>

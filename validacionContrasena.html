@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Formulario de Registro</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 20px;
+        background-color: #f4f4f4;
+      }
+
+      form {
+        background-color: white;
+        padding: 20px;
+        border-radius: 5px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        width: 300px;
+        margin: 0 auto;
+      }
+
+      label {
+        display: block;
+        margin-bottom: 10px;
+      }
+
+      input {
+        width: 100%;
+        padding: 8px;
+        margin-bottom: 10px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+      }
+
+      button {
+        width: 100%;
+        padding: 10px;
+        background-color: #4caf50;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+      }
+
+      button:hover {
+        background-color: #45a049;
+      }
+
+      .error {
+        color: red;
+        font-size: 0.9em;
+      }
+
+      .success {
+        color: green;
+        font-size: 1em;
+        font-weight: bold;
+      }
+    </style>
+  </head>
+  <body>
+    <h2>Registro de Usuario</h2>
+
+    <form id="registroForm">
+      <label for="nombre">Nombre de Usuario (solo minúsculas):</label>
+      <input type="text" id="nombre" name="nombre" required />
+      <div id="errorNombre" class="error"></div>
+
+      <label for="contrasena">Contraseña:</label>
+      <input type="password" id="contrasena" name="contrasena" required />
+      <div id="errorContrasena" class="error"></div>
+
+      <button type="submit">Registrarse</button>
+    </form>
+
+    <div id="mensaje" class="success"></div>
+
+    <script>
+      // Función para validar el nombre de usuario (solo letras minúsculas)
+      function validarNombre(nombre) {
+        const regex = /^[a-z]+$/; // Solo letras minúsculas
+        return regex.test(nombre);
+      }
+
+      // Función para validar la contraseña
+      function validarContrasena(contrasena) {
+        const mayuscula = /[A-Z]/;
+        const minuscula = /[a-z]/;
+        const numero = /[0-9]/;
+        const especial = /[^a-zA-Z0-9]/;
+
+        return (
+          mayuscula.test(contrasena) &&
+          minuscula.test(contrasena) &&
+          numero.test(contrasena) &&
+          especial.test(contrasena)
+        );
+      }
+
+      // Función principal que maneja el envío del formulario
+      document
+        .getElementById("registroForm")
+        .addEventListener("submit", function (event) {
+          event.preventDefault(); // Evita el envío del formulario por defecto
+
+          // Obtener los valores del formulario
+          const nombre = document.getElementById("nombre").value;
+          const contrasena = document.getElementById("contrasena").value;
+
+          let validacionCorrecta = true;
+
+          // Validar nombre de usuario
+          if (!validarNombre(nombre)) {
+            document.getElementById("errorNombre").textContent =
+              "El nombre de usuario debe contener solo letras minúsculas.";
+            validacionCorrecta = false;
+          } else {
+            document.getElementById("errorNombre").textContent = "";
+          }
+
+          // Validar contraseña
+          if (!validarContrasena(contrasena)) {
+            document.getElementById("errorContrasena").textContent =
+              "La contraseña debe contener: mayúscula, minúscula, número y carácter especial.";
+            validacionCorrecta = false;
+          } else {
+            document.getElementById("errorContrasena").textContent = "";
+          }
+
+          // Si la validación es correcta, mostrar mensaje de éxito
+          if (validacionCorrecta) {
+            document.getElementById("mensaje").textContent =
+              "Información almacenada correctamente.";
+            // Limpiar el formulario
+            document.getElementById("registroForm").reset();
+          } else {
+            document.getElementById("mensaje").textContent = "";
+          }
+        });
+    </script>
+  </body>
+</html>

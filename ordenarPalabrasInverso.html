@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ordenar Palabras</title>
+  </head>
+  <body>
+    <h1>Ordenar Palabras en Orden Inverso</h1>
+    <button onclick="ordenarPalabras()">Ordenar y Mostrar Palabras</button>
+    <script>
+      // Set para almacenar las palabras sin duplicados
+      const palabrasSet = new Set();
+
+      function ordenarPalabras() {
+        let palabraUsuario;
+
+        // Utilizamos un do while para seguir pidiendo palabras hasta que el usuario cancele o deje el cuadro vacío
+        do {
+          palabraUsuario = prompt(
+            "Introduce una palabra (deja el cuadro vacío o cancela para terminar):"
+          );
+
+          // Si el usuario no cancela ni deja el cuadro vacío, agregamos la palabra al set
+          if (palabraUsuario && palabraUsuario.trim() !== "") {
+            palabrasSet.add(palabraUsuario.trim()); // Trim para eliminar espacios extra
+          } else {
+            // Si el usuario deja el cuadro vacío o cancela, terminamos el bucle
+            break;
+          }
+        } while (true); // Repetir hasta que el cuadro esté vacío o el usuario cancele
+
+        // Convertir el Set a un Array para poder ordenarlo
+        const palabrasArray = Array.from(palabrasSet);
+
+        // Ordenamos las palabras en orden inverso (de la Z a la A)
+        palabrasArray.sort((a, b) => b.localeCompare(a));
+
+        // Mostrar las palabras ordenadas
+        alert(
+          "Palabras ordenadas en orden inverso (de Z a A):\n" +
+            palabrasArray.join("\n")
+        );
+      }
+    </script>
+  </body>
+</html>

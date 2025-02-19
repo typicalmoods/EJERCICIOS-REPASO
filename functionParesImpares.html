@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Función pares e impares</title>
+  </head>
+  <body>
+    <script>
+      function determinarNumero() {
+        let numeroUsuario;
+
+        do {
+          numeroUsuario = parseInt(prompt("Introduce un número"));
+
+          if (!isNaN(numeroUsuario) && numeroUsuario > 0) {
+            if (numeroUsuario % 2 === 0) {
+              alert(`El ${numeroUsuario} es par`);
+            } else {
+              alert(`El ${numeroUsuario} es impar`);
+            }
+          }
+        } while (!isNaN(numeroUsuario) && numeroUsuario > 0);
+
+        alert("Has salido existosamente del programa");
+      }
+
+      determinarNumero();
+    </script>
+  </body>
+</html>

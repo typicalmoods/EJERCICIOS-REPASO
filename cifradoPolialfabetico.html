@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cifrado polialfabético</title>
+  </head>
+  <body>
+    <script>
+      let textoUsuario = prompt("Introduce un texto:");
+      let claveUsuario = prompt("Introduce una clave que incluya números:");
+
+      // Extraemos los números de la clave
+      let claveNumerica = claveUsuario.match(/\d/g).map(Number);
+
+      // Creamos la variable i para ir recorriendo las cifras de la clave
+      let i = 0;
+      // Creamos el bucle donde desplazaremos la cifra y mostraremos por la web el resultado
+      for (let letra of textoUsuario) {
+        // Seleccionamos el número actual de la clave
+        let desplazamiento = claveNumerica[i];
+        let cifra = letra.charCodeAt(0) + desplazamiento;
+        document.write(String.fromCharCode(cifra));
+
+        // Avanzamos al siguiente número de la clave
+        i++;
+
+        // Reiniciamos las posiciones de la clave si llegamos al final
+        // de la longitud de nuestra clave numérica
+        if (i == claveNumerica.length) i = 0;
+      }
+    </script>
+  </body>
+</html>

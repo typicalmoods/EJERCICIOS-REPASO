@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Generar 500 números aleatorios</title>
+    <style>
+      h1 {
+        color: cornflowerblue;
+      }
+      body {
+        font-family: Arial, sans-serif;
+      }
+      table {
+        border-collapse: collapse;
+        width: 50%;
+        margin-top: 20px;
+      }
+      th,
+      td {
+        border: 1px solid black;
+        padding: 8px;
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>500 números aleatorios</h1>
+    <button onclick="mostrarNumerosAleatorios()">Generar números</button>
+    <div id="resultado"></div>
+
+    <script>
+      //Función para comprobar si es par o impar
+      function determinarParidad(numero) {
+        return numero % 2 === 0 ? "par" : "impar";
+      }
+
+      //Función para generar números y mostrar resultados
+      function mostrarNumerosAleatorios() {
+        const numeros = [];
+        for (let i = 0; i < 500; i++) {
+          //Generamos números aleatorios del 1 al 1000
+          const numeroAleatorio = Math.floor(Math.random() * 1000) + 1;
+
+          numeros.push({
+            numero: numeroAleatorio,
+            paridad: determinarParidad(numeroAleatorio),
+          });
+        }
+
+        //Creamnos la tabla con los resultados
+        let tabla = "<table>";
+        tabla += "<tr><th>Número</th><th>Par/Impar</th></tr>";
+        numeros.forEach((item) => {
+          tabla +=
+            "<tr><td>" +
+            item.numero +
+            "</td><td>" +
+            item.paridad +
+            "</td></tr>";
+        });
+        tabla += "</table>";
+
+        // Mostrar la tabla en el DOM
+        document.getElementById("resultado").innerHTML = tabla;
+      }
+    </script>
+  </body>
+</html>

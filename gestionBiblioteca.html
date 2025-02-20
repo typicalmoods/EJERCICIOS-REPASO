@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Gestión de biblioteca</title>
+    <script>
+      function Libro(titulo, autor, anoPublicacion, genero) {
+        this.titulo = titulo;
+        this.autor = autor;
+        this.anoPublicacion = anoPublicacion;
+        this.genero = genero;
+      }
+
+      function imprimirInformacionLibro(libro) {
+        console.log(`Título del libro: ${libro.titulo}`);
+        console.log(`Autor: ${libro.autor}`);
+        console.log(`Año de publicación: ${libro.anoPublicacion}`);
+        console.log(`Género: ${libro.genero}`);
+      }
+
+      function agregarLibro(biblioteca, libro) {
+        biblioteca.push(libro);
+      }
+
+      function buscarLibroPorAutor(biblioteca, autor) {
+        return biblioteca.filter((libro = libro.autor === autor));
+      }
+    </script>
+  </head>
+  <body>
+    <script>
+      let biblioteca = [];
+      const libro1 = new Libro("El libro troll", "Rubius", 2005, "Comedia");
+      const libro2 = new Libro("Aprende manga", "Koshinori", 1998, "Arte");
+
+      agregarLibro(biblioteca, libro1);
+      agregarLibro(biblioteca, libro2);
+
+      console.log("Información del libro1");
+      imprimirInformacionLibro(libro1);
+      console.log("Información del libro2");
+      imprimirInformacionLibro(libro2);
+
+      console.log("Libros de Rubius:");
+      const librosRubius = buscarLibroPorAutor(biblioteca, "Rubius");
+      librosRubius.forEach((libro) => imprimirInformacionLibro(libro));
+    </script>
+  </body>
+</html>

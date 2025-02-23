@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Uso de objetos predefinidos</title>
+  </head>
+  <body>
+    <script>
+      //1. Calcular el área de un círculo dado su radio
+      function calcularArea(radio) {
+        const areaCirculo = Math.PI * Math.pow(radio, 2);
+        console.log(`El área del círculo es ${areaCirculo.toFixed(2)}`);
+      }
+      //2. Generar número aleatorio entre el 1 y el 100
+      function generarNumeroAleatorio() {
+        const numeroAleatorio = Math.floor(Math.random() * 100) + 1;
+        console.log(`El número aleatorio es ${numeroAleatorio}`);
+      }
+
+      //3. Calcular día desde inicio hasta fecha actual
+      function calcularDias() {
+        const fechaActual = new Date();
+        const fechaInicioAno = new Date(fechaActual.getFullYear(), 0, 1);
+
+        const diferenciaFechas = fechaActual - fechaInicioAno;
+
+        // Lo convertimos en días
+        const diasPasados = Math.floor(
+          diferenciaFechas / (1000 * 60 * 60 * 24)
+        );
+        console.log(`Han pasado ${diasPasados} días desde el inicio del año`);
+
+        // Creamos la variable para guardar cómo queremos que nos guarde la fecha
+        const opciones = {
+          weekday: "long",
+          year: "numeric",
+          month: "long",
+          day: "numeric",
+          hour: "2-digit",
+          minute: "2-digit",
+        };
+
+        // Formateamos la fecha
+        const fechaFormateada = fechaActual.toLocaleDateString(
+          "es-ES",
+          opciones
+        );
+        console.log(`Fecha formateada: ${fechaFormateada}`);
+      }
+
+      //Llamamos a las funciones
+      calcularArea(5);
+      generarNumeroAleatorio();
+      calcularDias();
+    </script>
+  </body>
+</html>

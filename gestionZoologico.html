@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Gestión de un zoológico</title>
+  </head>
+  <body>
+    <script>
+      function Animal(nombre, tipo, edad, sonido, color = "Desconocido") {
+        // Validar que el nombre no esté vacío
+        if (!nombre || typeof nombre !== "string") {
+          throw new Error("El nombre debe ser un texto válido.");
+        }
+        this.nombre = nombre;
+
+        // Validar que el tipo no esté vacío
+        if (!tipo || typeof tipo !== "string") {
+          throw new Error("El tipo debe ser un texto válido.");
+        }
+        this.tipo = tipo;
+
+        // Validar que la edad sea un número positivo
+        if (
+          edad === undefined ||
+          edad === null ||
+          typeof edad !== "number" ||
+          edad < 0
+        ) {
+          throw new Error("La edad debe ser un número positivo o cero.");
+        }
+
+        this.edad = edad;
+
+        // Validar que el sonido no esté vacío
+        if (!sonido || typeof sonido !== "string") {
+          throw new Error("El sonido debe ser un texto válido.");
+        }
+        this.sonido = sonido;
+
+        // Validar que el color no esté vacío
+        if (!color || typeof color !== "string") {
+          throw new Error("El color debe ser un texto válido.");
+        }
+
+        // Asignar el color
+        this.colorAnimal = color;
+      }
+
+      // Método para hacer sonido
+      Animal.prototype.hacerSonido = function () {
+        console.log(`${this.nombre} hace el sonido ${this.sonido}`);
+      };
+
+      // Método para mostrar información
+      Animal.prototype.mostrarInfo = function () {
+        console.log(`Información del animal:`);
+        console.log(`Nombre: ${this.nombre}`);
+        console.log(`Tipo: ${this.tipo}`);
+        console.log(`Edad: ${this.edad}`);
+        console.log(`Sonido: ${this.sonido}`);
+        console.log(`Color: ${this.colorAnimal}`);
+      };
+
+      // Ejemplo de uso
+      try {
+        let leon = new Animal(
+          "León",
+          "Mamífero",
+          38,
+          "Rugido",
+          "Amarillo ocre"
+        );
+        leon.mostrarInfo();
+        leon.hacerSonido();
+      } catch (error) {
+        console.error(error.message);
+      }
+
+      // Ejemplo con datos incorrectos
+      try {
+        let tigre = new Animal("Tigre", "Mamífero", 5, "Grrr"); // Intento de crear objeto
+        tigre.mostrarInfo(); // Llamar a métodos (esto no se ejecutará si hay un error)
+        tigre.hacerSonido(); // Llamar a métodos (esto no se ejecutará si hay un error)
+      } catch (error) {
+        console.error(error.message); // Mostrará el mensaje de error
+      }
+    </script>
+  </body>
+</html>

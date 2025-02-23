@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Prototype en Arrays</title>
+  </head>
+  <body>
+    <script>
+      Array.prototype.suma = function () {
+        // Comprobamos que todos los elementos son números
+        if (!this.every((elemento) => typeof elemento === "number")) {
+          throw new Error("Todos los elementos del array debe ser números");
+        }
+        // Comprobamos si la array contiene elementos, si es así se ejecutará el método reduce
+        return this.length
+          ? this.reduce((anterior, actual) => anterior + actual, 0)
+          : 0;
+      };
+
+      //Ejemplo de uso
+      let listaNumeros = [1, 2, 3, 4, 5];
+      console.log(listaNumeros.suma());
+    </script>
+  </body>
+</html>
